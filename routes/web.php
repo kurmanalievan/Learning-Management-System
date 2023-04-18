@@ -25,6 +25,10 @@ Route::get('/subjects', function () {
     return view('subjects');
 });
 
-Route::get('/subjects/newsubject', function () {
+Route::get('/newsubject', function () {
     return view('newsubject');
+});
+
+Route::get('/about', function () {
+    return view('about');
 });
