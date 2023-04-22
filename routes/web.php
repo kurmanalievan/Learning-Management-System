@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProjectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/mywelcome', function () {
-    return view('mywelcome', ['name' => 'Nurs']);
-});
+Route::get('/mywelcome', [ ProjectController::class, "mywelcome"]);
 
-Route::get('/subjects', function () {
-    return view('subjects');
-});
+Route::get('/subjects', [ ProjectController::class, "subjects"]);
 
-Route::get('/newsubject', function () {
-    return view('newsubject');
-});
+Route::get('/newsubject', [ ProjectController::class, "newsubject"]);
+Route::post('/newsubject', [ ProjectController::class, "store"]);
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', [ ProjectController::class, "about"]);
