@@ -12,7 +12,6 @@ use App\Http\Controllers\ProjectController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,3 +24,4 @@ Route::get('/newsubject', [ ProjectController::class, "newsubject"]);
 Route::post('/newsubject', [ ProjectController::class, "store"]);
 
 Route::get('/about', [ ProjectController::class, "about"]);
+Route::get('/subjects/{id}/edit', [ ProjectController::class, "edit"]);
