@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Subject;
 
 class ProjectController extends Controller
 {
@@ -10,6 +11,7 @@ class ProjectController extends Controller
         return view('newsubject');
     }
     public function edit() {
+      //read the project from database
       return view('edit');
   }
     public function store(Request $request) {
@@ -18,23 +20,13 @@ class ProjectController extends Controller
         'description' => 'nullable',
         'image_url' => 'nullable|url'
       ]);
-    //   dd($validated_data);
+
+     Subject::create($validated_data);
      return redirect("/subjects");
       //save data next time
     }
     public function subjects() {
-      $projects = [
-        [
-            "id" => "1",
-            "name" => "project1",
-            "description" => "desc1",
-        ],
-        [
-            "id" => "2",
-            "name" => "project2",
-            "description" => "desc2",
-        ],
-    ];
+      $projects = Subject::all();
     return view('subjects', [
         "projects" => $projects,
     ]); //projects/list.blade.php
