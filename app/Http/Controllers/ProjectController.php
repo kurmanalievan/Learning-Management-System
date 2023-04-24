@@ -10,10 +10,17 @@ class ProjectController extends Controller
     public function newsubject() {
         return view('newsubject');
     }
-    public function edit() {
+    public function edit($id) {
       //read the project from database
-      return view('edit');
+      $subject = Subject::find($id);
+      return view('edit',  ["subject" => $subject]);
   }
+
+  public function show($id) {
+    //read the project from database
+    $subject = Subject::find($id);
+    return view('show',  ["subject" => $subject]);
+ }
     public function store(Request $request) {
       $validated_data = $request->validate([
         'name' => 'required',
@@ -25,8 +32,8 @@ class ProjectController extends Controller
      return redirect("/subjects");
       //save data next time
     }
-    public function subjects() {
-      $projects = Subject::all();
+    public function subjects() {    // index
+    $projects = Subject::all();
     return view('subjects', [
         "projects" => $projects,
     ]); //projects/list.blade.php
@@ -37,4 +44,21 @@ class ProjectController extends Controller
     public function mywelcome() {
         return view('mywelcome');
     }
+    public function update(Request $request, $id){
+      $subject = Subject::find($id);
+      $validated_data = $request->validate([
+        'name' => 'required',
+        'description' => 'nullable',
+        'image_url' => 'nullable|url'
+      ]);
+      $subject->update($validated_data);
+      return redirect("/subjects");
+    }
+
+    public function destroy($id) {
+      //read the project from database
+      $subject = Subject::find($id);
+      $subject->delete();
+      return redirect("/subjects");
+  }
 }
