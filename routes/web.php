@@ -32,3 +32,4 @@ Route::get('/{id}', [ ProjectController::class, "show"]);
 Route::delete('/{id}', [ ProjectController::class, "destroy"]);
 
 // Route::resource('/', ProjectController::class);   its just shorter better version for routing 
+// Route::resource('tracks', TrackController::class)->shallow();

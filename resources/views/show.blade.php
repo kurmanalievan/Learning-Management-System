@@ -13,10 +13,11 @@
       </form>
       
       <div class="list-group">
+        @foreach ($subject->tracks as $task)
         <a href="#" class="list-group-item list-group-item-action" style="background-color: #bbb7b4">
           <p class="d-flex justify-content-between align-items-center">
             <span> 
-              Track 1 
+              {{ $task->name }}
               <small>track1.wav</small>
             </span>
             <span class="badge badge-primary badge-pill">Muted</span>
@@ -27,8 +28,8 @@
             <li class="list-group-item p-1">Morbi leo risus</li>
           </ul>
         </a>
-
-        <a href="#" class="list-group-item list-group-item-action" style="background-color: #ab7969">
+        @endforeach
+        <!-- <a href="#" class="list-group-item list-group-item-action" style="background-color: #ab7969">
           <p class="d-flex justify-content-between align-items-center">
             <span> 
               Track 1 
@@ -40,7 +41,7 @@
             <li class="list-group-item p-1">Dapibus ac facilisis in</li>
             <li class="list-group-item p-1">Morbi leo risus</li>
           </ul>
-        </a>
+        </a> -->
       </div>
     </div>
 @endsection
