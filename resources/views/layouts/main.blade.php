@@ -27,7 +27,7 @@
           <a class="nav-link" href="/subjects">Subjects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/newsubject">New Subject</a>
+          <a class="nav-link" href="{{ route("newproject") }}">New Subject</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
